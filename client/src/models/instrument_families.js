@@ -6,10 +6,6 @@ class InstrumentFamilies {
   }
 }
 
-// const InstrumentFamilies = function (data) {
-//   this.data = data;
-// };
-
 InstrumentFamilies.prototype.bindEvents = function () {
   PubSub.publish('InstrumentFamilies:data-ready', this.data);
 
@@ -23,5 +19,16 @@ InstrumentFamilies.prototype.publishFamilyDetail = function (selectedIndex) {
   const selectedFamily = this.data[selectedIndex];
   PubSub.publish('InstrumentFamilies:selected-family-ready', selectedFamily)
 };
+
+
+// // Getter
+//   get area() {
+//     return this.calcArea();
+//   }
+//   // Method
+//   calcArea() {
+//     return this.height * this.width;
+//   }
+// }
 
 module.exports = InstrumentFamilies;

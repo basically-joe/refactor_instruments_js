@@ -1,8 +1,11 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const SelectView = function (element) {
-  this.element = element;
-};
+
+class SelectView {
+  constructor(element) {
+    this.element = element;
+  }
+}
 
 SelectView.prototype.bindEvents = function () {
   PubSub.subscribe('InstrumentFamilies:data-ready', (evt) => {

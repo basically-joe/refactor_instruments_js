@@ -7,28 +7,17 @@ class InstrumentFamilies {
 }
 
 InstrumentFamilies.prototype.bindEvents = function () {
-  PubSub.publish('InstrumentFamilies:data-ready', this.data);
+  return PubSub.publish('InstrumentFamilies:data-ready', this.data);
 
-  PubSub.subscribe('SelectView:change', (evt) => {
+  return PubSub.subscribe('SelectView:change', (evt) => {
     const selectedIndex = evt.detail;
-    this.publishFamilyDetail(selectedIndex);
+    return this.publishFamilyDetail(selectedIndex);
   });
 };
 
 InstrumentFamilies.prototype.publishFamilyDetail = function (selectedIndex) {
   const selectedFamily = this.data[selectedIndex];
-  PubSub.publish('InstrumentFamilies:selected-family-ready', selectedFamily)
+  return PubSub.publish('InstrumentFamilies:selected-family-ready', selectedFamily)
 };
-
-
-// // Getter
-//   get area() {
-//     return this.calcArea();
-//   }
-//   // Method
-//   calcArea() {
-//     return this.height * this.width;
-//   }
-// }
 
 module.exports = InstrumentFamilies;
